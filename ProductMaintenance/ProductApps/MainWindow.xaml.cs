@@ -28,17 +28,23 @@ namespace ProductApps
         }
 
         private void calculateButton_Click(object sender, RoutedEventArgs e)
-        {
+        { 
+            decimal myPayment;
             try
             {
                 cProduct = new Product(Convert.ToDecimal(priceTextBox.Text), Convert.ToInt16(quantityTextBox.Text));
-                cProduct.calTotalPayment();
+                myPayment = cProduct.calTotalPayment();
                 totalPaymentTextBlock.Text = Convert.ToString(cProduct.TotalPayment);
+                totalChargeTextBlock.Text = (myPayment + 25.0m).ToString();
             }
             catch (FormatException)
             {
                 MessageBox.Show("Enter data again", "Data Entry Error");
             }
+
+            
+
+
         }
 
         private void clearButton_Click(object sender, RoutedEventArgs e)
